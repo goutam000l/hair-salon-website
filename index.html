@@ -4,3 +4,112 @@ index.html
 style.css
 
 script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hair Salon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>My Hair Salon</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#booking">Book</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h2>Style Your Hair, Style Your Life</h2>
+    <button onclick="scrollToBooking()">Book Appointment</button>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="service-box">
+        <div>Haircut</div>
+        <div>Beard Trim</div>
+        <div>Hair Spa</div>
+    </div>
+</section>
+
+<!-- BOOKING SECTION -->
+<section id="booking">
+    <h2>Book Appointment</h2>
+
+    <form id="bookingForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+
+        <select required>
+            <option value="">Select Service</option>
+            <option>Haircut</option>
+            <option>Beard Trim</option>
+            <option>Hair Spa</option>
+        </select>
+
+        <input type="date" required>
+        <input type="time" required>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <p id="message"></p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>📞 +91 9876543210</p>
+</section>
+
+<footer>
+    <p>© 2026 My Hair Salon</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: auto;
+    gap: 10px;
+}
+
+form input, form select, form button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 15px;
+    color: green;
+}
+function scrollToBooking() {
+    document.getElementById("booking").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.getElementById("message").innerText =
+        "✅ Your appointment has been booked successfully!";
+
+    this.reset();
+});
